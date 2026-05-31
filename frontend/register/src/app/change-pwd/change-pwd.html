@@ -1,0 +1,103 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="col-10 col-md-8 col-lg-6">
+    <div class="card shadow">
+      <div class="card-header bg-success text-white text-center">Change Password</div>
+      <div class="card-body">
+        <form #f="ngForm">
+          
+          <!-- Email -->
+          <div class="col-12 mb-3">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              required
+              pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+              #email="ngModel"
+              [(ngModel)]="change.email"
+              class="form-control"
+            />
+            <div class="text-danger" *ngIf="email.touched">
+              <span *ngIf="email.errors?.['required']">Email is required</span>
+              <span *ngIf="email.errors?.['pattern']">Invalid email format</span>
+            </div>
+          </div>
+
+          <!-- Current Password -->
+          <div class="col-12 mb-3">
+            <label>Current Password</label>
+            <input
+              type="password"
+              name="currentPwd"
+              minlength="8"
+              required
+              #currentPwd="ngModel"
+              [(ngModel)]="change.currentPwd"
+              class="form-control"
+            />
+            <div class="text-danger" *ngIf="currentPwd.touched">
+              <span *ngIf="currentPwd.errors?.['required']">Password is required</span>
+              <span *ngIf="currentPwd.errors?.['minlength']">Min 8 chars required</span>
+            </div>
+          </div>
+
+          <!-- New Password -->
+          <div class="col-12 mb-3">
+            <label>New Password</label>
+            <input
+              type="password"
+              name="newPwd"
+              minlength="8"
+              required
+              #newPwd="ngModel"
+              [(ngModel)]="change.newPwd"
+              class="form-control"
+            />
+            <div class="text-danger" *ngIf="newPwd.touched">
+              <span *ngIf="newPwd.errors?.['required']">New Password is required</span>
+              <span *ngIf="newPwd.errors?.['minlength']">Min 8 chars required</span>
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="col-12 mb-3">
+            <label>Confirm Password</label>
+            <input
+              type="password"
+              name="confirmPwd"
+              minlength="8"
+              required
+              #confirmPwd="ngModel"
+              [(ngModel)]="change.confirmPwd"
+              class="form-control"
+            />
+            <div class="text-danger" *ngIf="confirmPwd.touched">
+              <span *ngIf="confirmPwd.errors?.['required']">Confirm Password is required</span>
+              <span *ngIf="confirmPwd.value !== newPwd.value && confirmPwd.touched">Passwords do not match</span>
+            </div>
+          </div>
+          <!-- Success / Error Messages -->
+          <div *ngIf="successMsg" class="alert alert-success">
+            {{ successMsg }}
+          </div>
+          <div *ngIf="errorMsg" class="alert alert-danger">
+            {{ errorMsg }}
+          </div>
+
+          <!-- Submit Button -->
+          <div class="col-12">
+            <button
+              class="btn btn-primary"
+              type="submit"
+              [disabled]="f.invalid || change.newPwd !== change.confirmPwd"
+              (click)="changePwd()"
+            >
+              Change Password
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-6">
+    <form #f="ngForm">
+      <div class="container mt-5">
+        <h2>Reset Your Password</h2>
+
+        <input
+          type="password"
+          name="password" 
+          [(ngModel)]="newPwd"
+          #password="ngModel"
+          placeholder="Enter new password"
+          class="form-control mt-3"
+          required
+          minlength="8"
+        />
+
+        <div class="text-danger" *ngIf="password.touched && password.invalid">
+          <span *ngIf="password.errors?.['required']">
+            Password is required
+          </span>
+          <span *ngIf="password.errors?.['minlength']">
+            Min 8 chars required
+          </span>
+        </div>
+
+        <button
+          type="button"
+          (click)="resetPassword()"
+          class="btn btn-primary mt-3"
+          [disabled]="!f.valid"
+        >
+          Reset Password
+        </button>
+
+        <p class="mt-3">{{message}}</p>
+      </div>
+    </form>
+  </div>
+</div>

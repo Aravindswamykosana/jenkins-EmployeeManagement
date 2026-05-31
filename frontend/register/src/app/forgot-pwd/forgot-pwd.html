@@ -1,0 +1,67 @@
+<div class="row">
+  @if(isLoader){
+  <div class="col-3 text-center">
+    <div class="spinner-border text-muted"></div>
+    <div class="spinner-border text-primary"></div>
+    <div class="spinner-border text-success"></div>
+    <div class="spinner-border text-info"></div>
+    <div class="spinner-border text-warning"></div>
+    <div class="spinner-border text-danger"></div>
+    <div class="spinner-border text-secondary"></div>
+    <div class="spinner-border text-dark"></div>
+    <div class="spinner-border text-light"></div>
+  </div>
+  }@else{
+  <div class="d-flex justify-content-center align-items-center vh-100">
+    <form
+      #f="ngForm"
+      class="p-4 border rounded shadow bg-white"
+      style="width: 400px"
+      novalidate
+    >
+      <h4 class="text-center mb-4">Forgot Password</h4>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          #email="ngModel"
+          [(ngModel)]="forgot.email"
+          required
+          pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+          class="form-control"
+        />
+
+        <!-- Real-time validation messages -->
+        <div class="mt-1">
+          <small
+            class="text-danger"
+            *ngIf="email.invalid && (email.dirty || email.touched)"
+          >
+            <span *ngIf="email.errors?.['required']">Email is required</span>
+            <span *ngIf="email.errors?.['pattern']">Invalid email format</span>
+          </small>
+
+          <small
+            class="text-success"
+            *ngIf="email.valid && (email.dirty || email.touched)"
+          >
+            ✅ Email looks good
+          </small>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-primary w-100"
+        [disabled]="!f.valid"
+        (click)="forgotPwd()"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+  }
+</div>

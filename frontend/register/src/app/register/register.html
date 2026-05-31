@@ -1,0 +1,103 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="card">
+    <div class="card-header bg-success">Register-User</div>
+    <div class="card-body">
+      <form #f="ngForm">
+        <div class="row">
+
+          <!-- Name -->
+          <div class="col-6">
+            <label>Name</label>
+            <input
+              type="text"
+              name="name"
+              minlength="5"
+              required
+              #name="ngModel"
+              (keypress)="allowOnlyAlphabets($event)"
+              [(ngModel)]="register.name"
+              class="form-control"
+            />
+            <div class="text-danger" *ngIf="name.touched">
+              <span *ngIf="name.errors?.['required']">This field is required</span>
+              <span *ngIf="name.errors?.['minlength']">Min 5 chars required</span>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="col-6">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              required
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+              #email="ngModel"
+              [(ngModel)]="register.email"
+              class="form-control"
+            />
+            <div class="text-danger" *ngIf="email.touched">
+              <span *ngIf="email.errors?.['required']">Email is required</span>
+              <span *ngIf="email.errors?.['pattern']">Invalid email format</span>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="col-6">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              minlength="8"
+              required
+              #password="ngModel"
+              [(ngModel)]="register.password"
+              class="form-control"
+            />
+            <div class="text-danger" *ngIf="password.touched">
+              <span *ngIf="password.errors?.['required']">Password is required</span>
+              <span *ngIf="password.errors?.['minlength']">Min 8 chars required</span>
+            </div>
+          </div>
+
+          <!-- Contact Number -->
+          <div class="col-6">
+            <label>ContactNum</label>
+            <input
+              type="number"
+              name="contactNum"
+              required
+              minlength="10"
+              #contactNum="ngModel"
+              [(ngModel)]="register.contactNum"
+              class="form-control"
+            />
+            <div class="text-danger" *ngIf="contactNum.touched">
+              <span *ngIf="contactNum.errors?.['required']">Contact number is required</span>
+              <span *ngIf="contactNum.errors?.['minlength']">Min 10 digits required</span>
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="row pt-2">
+            <div class="col-6 text-center">
+              <button type="button" class="btn btn-success" (click)="rest()">Reset</button>
+            </div>
+            <div class="col-6 text-center">
+              <button type="button" class="btn btn-primary" (click)="saveUser()" [disabled]="!f.valid">Submit</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row pt-3">
+            <div class="col-12 text-center">
+              <span>Already have an account? 
+                <a routerLink="/loginUser">Login here</a>
+              </span>
+            </div>
+          </div>
+
+      </form>
+    </div>
+  </div>
+</div>

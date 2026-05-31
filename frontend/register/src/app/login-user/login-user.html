@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header bg-success">loginUser</div>
+      <div class="card-body">
+        <form #f="ngForm">
+          <div class="row">
+            <div class="col-6">
+              <label for="">Email</label>
+              <input
+                type="email"
+                name="email"
+                required
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                #email="ngModel"
+                [(ngModel)]="login.email"
+                class="form-control"
+              />
+              <div class="text-danger" *ngIf="email.touched">
+                <span *ngIf="email.errors?.['required']"
+                  >Email is required</span
+                >
+                <span *ngIf="email.errors?.['pattern']"
+                  >Invalid email format</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+                <label>Password</label>
+                <input
+              type="password"
+              name="password"
+              minlength="8"
+              required
+              #password="ngModel"
+              [(ngModel)]="login.password"
+              class="form-control"
+            />
+            <div class="text-danger" *ngIf="password.touched">
+              <span *ngIf="password.errors?.['required']">Password is required</span>
+              <span *ngIf="password.errors?.['minlength']">Min 8 chars required</span>
+            </div>
+            </div>
+          </div>
+
+           <div class="row pt-2">
+            <div class="col-6 text-center">
+              <button type="button" class="btn btn-success" (click)="loginUser()" [disabled]="!f.valid">Submit</button>
+            </div>
+          </div>
+
+          <div class="row pt-3">
+            <div class="col-12 text-center">
+              <span>Forgot Password? 
+                <a routerLink="/forgot">Click here</a>
+              </span>
+            </div>
+          </div>
+
+          <div class="row pt-3">
+            <div class="col-12 text-center">
+              <span>Don't have an account? 
+                <a routerLink="/register">Register here</a>
+              </span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

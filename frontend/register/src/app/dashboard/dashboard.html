@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="col-10 col-md-8 col-lg-6">
+    <div class="card shadow">
+      <div class="card-header bg-success text-white text-center">
+        Dashboard
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered table-striped text-center">
+          <thead class="table-success">
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Contact Num</th>
+              <th>Create Date</th>
+              <th>Update Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ user.id }}</td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.contactNum }}</td>
+              <td>{{ user.createDate }}</td>
+              <td>{{ user.updateDate }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
