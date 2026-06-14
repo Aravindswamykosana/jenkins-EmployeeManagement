@@ -17,11 +17,11 @@ export class Login {
       .set('mail', login.email)
       .set('pwd', login.password);
 
-    return this.http.get("http://32.236.43.213:8081/login", { params, responseType: 'text' });
+    return this.http.get("http://3.26.147.40:8081/login", { params, responseType: 'text' });
   }
 
     getUserByEmail(email: string): Observable<User1> {
-    return this.http.get<User1>(`http://32.236.43.213:8081/getByEmail?email=${email}`);
+    return this.http.get<User1>(`http://3.26.147.40:8081/getByEmail?email=${email}`);
   }
 
 }
