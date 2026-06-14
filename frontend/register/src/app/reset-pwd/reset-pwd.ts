@@ -22,7 +22,7 @@ export class ResetPwd {
   }
 
   resetPassword() {
-    this.http.post(`http://localhost:8081/resetPwd?token=${this.token}&newPwd=${this.newPwd}`, null, { responseType: 'text' })
+    this.http.post(`http://32.236.43.213:8081/resetPwd?token=${this.token}&newPwd=${this.newPwd}`, null, { responseType: 'text' })
       .subscribe({
         next: (res) => this.message = res+" please go to login page",
         error: (err) => this.message = 'Something went wrong'
