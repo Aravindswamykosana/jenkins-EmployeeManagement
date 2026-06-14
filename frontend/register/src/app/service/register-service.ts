@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class RegisterService {
 
   http=inject(HttpClient)
-  url = "http://32.236.43.213:8081/register";
+  url = "http://3.26.147.40:8081/register";
   
   saveUser(reg:Register1):Observable<Register1>{
     return this.http.post<Register1>(this.url,reg);
