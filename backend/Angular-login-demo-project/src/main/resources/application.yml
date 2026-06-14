@@ -2,7 +2,7 @@ spring:
   application:
     name: Angular-login-demo-project
   datasource:
-    url: jdbc:mysql://host.docker.internal:3306/arvind
+    url: jdbc:mysql://mysql:3306/arvind
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
