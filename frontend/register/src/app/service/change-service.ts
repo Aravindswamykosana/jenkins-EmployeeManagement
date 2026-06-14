@@ -12,7 +12,7 @@ export class ChangeService {
 
   changePwd(change: Change): Observable<any> {
   return this.http.post(
-    `http://32.236.43.213:8081/change-password?email=${change.email}&currentPassword=${change.currentPwd}&newPassword=${change.newPwd}&confirmPassword=${change.confirmPwd}`,
+    `http://3.26.147.40:8081/change-password?email=${change.email}&currentPassword=${change.currentPwd}&newPassword=${change.newPwd}&confirmPassword=${change.confirmPwd}`,
     null,
     { responseType: 'json' } 
   );
