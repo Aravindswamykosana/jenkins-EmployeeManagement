@@ -10,6 +10,6 @@ export class ForgotService {
   http=inject(HttpClient)
 
     forgotPwd(forgot:ForgotPwd1):Observable<ForgotPwd1>{
-      return this.http.post<ForgotPwd1>(`http://32.236.43.213:8081/forgotPwd?email=${forgot.email}`,null);
+      return this.http.post<ForgotPwd1>(`http://3.26.147.40:8081/forgotPwd?email=${forgot.email}`,null);
     }
 }
